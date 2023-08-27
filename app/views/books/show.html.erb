@@ -1,0 +1,48 @@
+<div>
+  <%= flash[:notice] %>
+</div>
+
+
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <div><%= render 'books/list', user: @user, book: @book %></div>
+    </div>
+ 
+<div class="col-md-8 offset-md-1">
+
+
+<h1>Book detail</h1>
+
+<table class="table">
+
+  <tbody>
+      
+   
+   <tr>
+    
+      <td>
+      <%= link_to user_path(@user.id) do %>
+       <%= image_tag @book.user.get_profile_image(100,100) %>
+       <br><%= @book.user.name %></br>
+      <% end %>
+      </td>
+      <td>
+      <%= link_to book_path(@book.id) do %>
+       <%= @book.title %>
+      <% end %>
+      </td>
+      <td><%= @book.body %></td>
+    　 <td><% if @book.user == current_user %></td>
+      <td><%= link_to 'Edit', edit_book_path(@book.id), class: "btn btn-sm btn-success" %></td>
+      <td><%= link_to "Destroy", book_path(@book), method: :delete, class: 'btn btn-sm btn-danger'  %></td>
+          <% end %>
+      </td>
+      
+   </tr>
+   
+ 
+  </tbody>
+</table>
+ </div>
+</div>
